@@ -1,0 +1,81 @@
+$colors : ( white : #FFF , primary :#6156F9 , dark : #1A129F );
+
+$fonts : ( Poppins : ( 'Black' , 'Bold','Regular','Light','Medium'));
+
+$directions : ('top' , 'left' , 'right' , 'bottom');
+
+@each $name , $hex in $colors {
+  .color-#{""+$name}{
+    color: $hex;
+  }
+  .bg-#{""+$name}{
+    background: $hex;
+  }
+}
+
+
+
+
+@for $i from 1 to 100 {
+  .ma-t-#{$i}{
+    margin-top: $i * 1%;
+  }
+  .font-#{$i}{
+    font-size: $i * 1px;
+  }
+  .p-y-#{$i}{
+    padding: $i * 1% 0%;
+  }
+  .font-#{$i}{
+    font-size: $i *1px !important;
+  }
+}
+
+
+@mixin mt($val) {
+  margin-top: $val * 1%;
+}
+@mixin font-size($val) {
+  font-size: $val * 1px;
+}
+
+
+
+@each $font in $fonts {
+  @each $type in $font {
+    @if $type == 'Bold' {
+      @font-face {
+        font-family: $type;
+        src: url('../../fonts/'+#{$font}+'/'+#{$font}+'-'+#{$type}+'.ttf');
+        font-weight: bold;
+      }
+    }
+    @if $type == 'Black' {
+      @font-face {
+        font-family: $type;
+        src: url('../../fonts/'+#{$font}+'/'+#{$font}+'-'+#{$type}+'.ttf');
+        font-weight: bolder;
+      }
+    }
+    @if $type == 'Light' {
+      @font-face {
+        font-family: $type;
+        src: url('../../fonts/'+#{$font}+'/'+#{$font}+'-'+#{$type}+'.ttf');
+        font-weight: lighter;
+      }
+    }
+    @if $type == 'Regular' {
+      @font-face {
+        font-family: $type;
+        src: url('../../fonts/'+#{$font}+'/'+#{$font}+'-'+#{$type}+'.ttf');
+      }
+    }
+      @if $type == 'Medium' {
+        @font-face {
+          font-family: $type;
+          src: url('../../fonts/'+#{$font}+'/'+#{$font}+'-'+#{$type}+'.ttf');
+          font-weight: 500;
+        }
+    }
+  }
+}
